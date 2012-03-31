@@ -1,0 +1,92 @@
+html, body, div, span, applet, object, iframe, table, caption,
+tbody, tfoot, thead, tr, th, td, del, dfn, em, font, img, ins,
+kbd, q, s, samp, small, strike, strong, sub, sup, tt, var,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr,
+acronym, address, big, cite, code, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend {
+    font-family: inherit;
+    font-weight: inherit;
+    font-style: inherit;
+    font-size: 100%;
+    outline: 0;
+    padding: 0;
+    margin: 0;
+    border: 0;}
+:focus{outline:6;}
+
+
+table{border-collapse: separate;border-spacing:0;}
+caption, th, td{font-weight: normal;text-align:left;}
+blockquote:before, blockquote:after, q:before, q:after{content: "";}
+blockquote, q{quotes: "" "";}
+
+*{
+    outline:none;
+}
+ul, li{
+    list-style:none;
+    display:block;
+}
+/* HTML5 tags */
+header, section, footer,
+aside, nav, article, figure {
+    display: block;
+}
+
+/* Body */
+body {
+    background: url(../img/background.gif) top repeat-x;
+    color: #000305;
+    font-size: 14px;
+    font-family: "Helvetica", Arial;
+    line-height: 1.429;
+    margin: 0;
+    padding: 0;
+}
+
+#header{
+    background: #323232;
+    border-bottom:3px solid #5f5f5f;
+    margin-bottom:10px;
+}
+
+#header .content{
+    height:31px;
+    margin: 0px auto;
+    padding-top: 7px;
+    width:800px;
+}
+
+#header .logo{
+    background: url(../img/logo.gif);
+    display: block;
+    float: left;
+    height: 25px;
+    width: 127px;
+}
+
+#header .account-menu{
+    float: right;
+}
+
+#header .account-menu li{
+    float: left;
+    margin: 7px;
+}
+
+#header .account-menu a{
+    color: #999;
+    display: block;
+    height:24px;
+    text-decoration:none;
+}
+
+#header .account-menu a:hover{
+    color: #fff;
+    border-bottom:solid 3px #fff;
+}
+
+#main{
+    margin: 0 auto;
+    width:800px;
+}

@@ -3,8 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/base.css">
 </head>
 <body>
-    {% block content %} {% endblock %}
+    <div id="header">
+        <div class="content">
+            <a href="" class="logo"></a>
+            <ul class="account-menu">
+                <li>
+                    <a href="">entrar</a>
+                </li>
+                <li>
+                    <a href="">criar uma conta</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="main">
+        {% block content %} {% endblock %}
+    </div>
 </body>
 </html>
