@@ -86,7 +86,13 @@ body {
     border-bottom:solid 3px #fff;
 }
 
-#main{
+#main, #footer{
     margin: 0 auto;
     width:800px;
+}
+
+#footer{
+    margin-top:20px;
+    color: #999999;
+    font-size:12px;
 }
