@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/base.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/base.css" type="text/css">
+    {% block css %}{% endblock %}
 </head>
 <body>
     <div id="header">
