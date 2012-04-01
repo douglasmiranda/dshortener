@@ -4,12 +4,6 @@ from django.template.response import TemplateResponse
 from forms import EncurtarURLForm
 
 
-class HomeTemplateView1(TemplateView):
-    template_name = 'encurtador/home.html'
-
-    def dispatch(self, *args, **kwargs):
-        return super(HomeTemplateView, self).dispatch(*args, **kwargs)
-
 class HomeTemplateView(View):
     template_name = 'encurtador/home.html'
 
