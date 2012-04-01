@@ -2,21 +2,31 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>{% block title %}dShortener - encurtador de URLs{% endblock %}</title>
     <link rel="stylesheet" href="{{ STATIC_URL }}css/base.css" type="text/css">
     {% block css %}{% endblock %}
 </head>
 <body>
     <div id="header">
         <div class="content">
-            <a href="" class="logo"></a>
+            <a href="{% url home %}" class="logo"></a>
             <ul class="account-menu">
+                {% if not user.is_authenticated %}
                 <li>
-                    <a href="">entrar</a>
+                    <a href="{% url auth_login %}">entrar</a>
                 </li>
                 <li>
-                    <a href="">criar uma conta</a>
+                    <a href="{% url registration_register %}">criar uma conta</a>
                 </li>
+                {% endif %}
+                {% if user.is_authenticated %}
+                <li>
+                    <a href="{% url auth_password_change %}">trocar senha</a>
+                </li>
+                <li>
+                    <a href="{% url auth_logout %}">sair</a>
+                </li>
+                {% endif %}
             </ul>
         </div>
     </div>

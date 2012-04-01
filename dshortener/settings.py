@@ -149,3 +149,6 @@ LOGGING = {
         },
     }
 }
+
+# django-register
+ACCOUNT_ACTIVATION_DAYS = 7
