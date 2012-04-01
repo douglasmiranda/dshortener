@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 from django.conf import settings
 from util import UUIDCurto
 
@@ -11,6 +12,7 @@ class Link(models.Model):
     handler = UUIDCurto()
     url = models.URLField()
     criacao = models.DateTimeField(auto_now_add=True)
+    usuario = models.ForeignKey(User, blank=True, null=True, on_delete=models.SET_NULL)
     objects = LinkManager()
 
     @property
@@ -27,3 +29,4 @@ class Link(models.Model):
 
     def __unicode__(self):
         return self.url
+
