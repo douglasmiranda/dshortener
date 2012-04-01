@@ -33,10 +33,12 @@
 #id_url{
     margin-right:4px;
     width: 469px;
+    height:18px;
 }
 
 #shorten-it{
     width: 95px;
+    height:50px;
 }
 
 #shorten-it:hover{
@@ -51,9 +53,13 @@
     border: 1px solid;
     border-radius: 8px;
     margin-top:15px;
-    padding: 15px;
+    padding: 15px 15px 5px 15px;
     width:568px;
     display: none;
+}
+
+#shortened-urls li{
+    margin-bottom:10px;
 }
 
 #shortened-urls.show{
@@ -66,4 +72,38 @@
 
 #shortened-urls.erro{
     border-color:#FF0E00;
+}
+
+#shortened-urls a{
+    color:#999999;
+    text-decoration:none;
+}
+
+.select-text{
+    color: #333333;
+    font-weight:bold;
+}
+
+.select-text:hover{
+    color: #777;
+    cursor: pointer;
+}
+
+#shortened-urls .shortened-url{
+    color: #777;
+    font-style: italic;
+}
+
+#shortened-urls .shortened-url:hover{
+    color: #444;
+    text-decoration:underline;
+}
+
+#shortened-urls input{
+    border: 1px;
+    border-radius: 5px;
+    font-size: 13px;
+    height: 16px;
+    padding: 2px;
+    width: 169px;
 }
