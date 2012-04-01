@@ -152,3 +152,6 @@ LOGGING = {
 
 # django-register
 ACCOUNT_ACTIVATION_DAYS = 7
+
+# app encurtador
+ENCURTADOR_SITE_BASE_URL = 'http://localhost:8000/'
