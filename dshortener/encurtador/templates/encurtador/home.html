@@ -1,18 +1,32 @@
 {% extends "base.html" %}
 
+{% block css %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}encurtador/css/home.css" type="text/css">
+{% endblock %}
+
 {% block content %}
-    <h1>Hello World!</h1>
-    <form action="" method="post">
-        {% csrf_token %}
-        <label>
-            {{ form_encurtar_url.url.errors }}
-            {{ form_encurtar_url.url }}
-        </label>
-        <input type="submit" value="Encurtar">
-        {% ifequal resultado.status 'ok' %}
-        <p class="short-url"><a href="{{ resultado.url_curta }}">{{ resultado.url_curta }}</a> > {{ resultado.url }}</p>
-        {% else %}
-        <p class="error">{{ resultado.mensagem }}</p>
-        {% endifequal %}
-    </form>
+    <div id="home-conteiner">
+        <div id="logo">
+            <h1>
+                <img src="{{ STATIC_URL }}encurtador/img/logo-home.gif" alt="dShortener - encurtador de URLs">
+                <p>dShortener - A forma mais inteligente e encurtar URLs</p>
+            </h1>
+        </div>
+        <div id="form-shorten-url">
+            <form action="" method="post">
+                {% csrf_token %}
+                <label>{{ form_encurtar_url.url }}</label>
+                <input type="submit" id="shorten-it" value="Encurtar">
+            </form>
+        </div>
+        <div id="shortened-urls" class="{{ resultado.status }} {% if resultado.status %}show{% endif %}">
+            {% ifequal resultado.status 'ok' %}
+            <p class="short-url">
+                <a href="{{ resultado.url_curta }}">{{ resultado.url_curta }}</a> &gt; {{ resultado.url }}
+            </p>
+            {% else %}
+            <p class="error">{{ resultado.mensagem }}</p>
+            {% endifequal %}
+        </div>
+    </div>
 {% endblock %}

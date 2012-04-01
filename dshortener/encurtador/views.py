@@ -34,7 +34,7 @@ class HomeTemplateView(View):
             resultado['url_curta'] = link.url_curta
         else:
             resultado['status'] = 'erro'
-            resultado['mensagem'] = 'Informe uma url para ser encurtada!'
+            resultado['mensagem'] = 'Informe uma URL válida para ser encurtada!'
         contexto['resultado'] = resultado
 
         return TemplateResponse(
