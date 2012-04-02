@@ -1,0 +1,26 @@
+#not-found{
+    margin-top: 40px;
+}
+
+#not-found h1{
+    color: #333;
+    font-size:26px;
+}
+
+#sad-face{
+    font-size:26px;
+    text-align: center;
+    margin-top:20px;
+}
+
+#back-to-home{
+    color: #333;
+    font-size:16px;
+    margin-top:15px;
+    text-align: center;
+}
+
+#back-to-home a{
+    color: #000;
+    font-weight:bold;
+}
