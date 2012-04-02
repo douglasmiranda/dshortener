@@ -1,7 +1,9 @@
 # coding:utf-8
-from django.views.generic import View, TemplateView
+from django.views.generic import View, RedirectView
 from django.template.response import TemplateResponse
+from django.views.defaults import page_not_found
 from forms import EncurtarURLForm
+from models import Link
 
 
 class HomeTemplateView(View):
@@ -49,3 +51,13 @@ class HomeTemplateView(View):
         contexto = {}
         contexto['form_encurtar_url'] = EncurtarURLForm
         return contexto
+
+class GoToRedirectView(RedirectView):
+    def get(self, request, *args, **kwargs):
+        uuid = kwargs.get('uuid_curto')
+        try:
+            l = Link.objects.by_uuid(uuid)
+            self.url = l.url
+            return super(GoToRedirectView, self).get(request, *args, **kwargs)
+        except Link.DoesNotExist:
+            return page_not_found(request)
