@@ -21,6 +21,9 @@
                 {% endif %}
                 {% if user.is_authenticated %}
                 <li>
+                    <a href="{% url my_links %}">meus links</a>
+                </li>
+                <li>
                     <a href="{% url auth_password_change %}">trocar senha</a>
                 </li>
                 <li>

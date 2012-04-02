@@ -1,0 +1,43 @@
+.forms{
+    margin-top:20px;
+}
+
+.forms h2{
+    font-size:18px;
+}
+
+.forms .form-center{
+    margin:15px auto;
+}
+
+.forms .medium{
+    width:300px;
+}
+
+.forms .errorlist{
+    background: #f4f4f4;
+    border: 1px dashed #f00;
+    margin-bottom:10px;
+    padding: 5px;
+    border-radius:5px;
+    color: #333;
+}
+
+.forms .medium input, .forms .medium label{
+    width:268px;
+    margin-bottom:5px;
+    color: #333;
+}
+
+.forms .medium input[type="submit"]{
+    display: block;
+    margin: 5px auto;
+    width: 165px;
+}
+
+.forms input{
+    background: #F0F0F0;
+    border: 1px solid #D7D7D7;
+    border-radius: 8px;
+    padding: 15px;
+}

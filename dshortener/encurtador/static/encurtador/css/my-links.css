@@ -1,0 +1,26 @@
+#my-links-container h1{
+    font-size:18px;
+    margin-bottom: 20px;
+}
+
+#my-links-container{
+    margin-top: 40px;
+}
+
+#my-links-container a{
+    color:#999999;
+    text-decoration:none;
+}
+
+#my-links-container .shortened-url{
+    color: #333;
+    font-weight:bold;
+}
+
+#my-links-container .shortened-url:hover{
+    color: #333;
+}
+
+.paginacao-global{
+    margin: 20px 0px 10px 0px;
+}

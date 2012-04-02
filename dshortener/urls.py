@@ -1,5 +1,5 @@
 from django.conf.urls.defaults import patterns, include, url
-from encurtador.views import HomeTemplateView, GoToRedirectView
+from encurtador.views import HomeTemplateView, GoToRedirectView, MyLinksListView
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 # admin.autodiscover()
@@ -13,7 +13,8 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
-    (r'^users/*$', 'django.views.generic.simple.redirect_to', {'url': '/'}),
+    (r'^users/*', 'django.views.generic.simple.redirect_to', {'url': '/user/my-links/'}),
+    url(r'^user/my-links/', MyLinksListView.as_view(), name='my_links'),
     (r'^user/accounts/', include('registration.backends.simple.urls')),
     (r'^user/auth/', include('registration.auth_urls')),
 )

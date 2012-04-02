@@ -8,6 +8,9 @@ class LinkManager(models.Manager):
     def by_uuid(self, uuid):
         return self.filter(pk=Link.decodificar_uuid(uuid)).get()
 
+    def meus_links(self, usuario):
+        return self.filter(usuario=usuario)
+
 class Link(models.Model):
     handler = UUIDCurto()
     url = models.URLField()

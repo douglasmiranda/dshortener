@@ -1,5 +1,5 @@
 # coding:utf-8
-from django.views.generic import View, RedirectView
+from django.views.generic import View, RedirectView, ListView
 from django.template.response import TemplateResponse
 from django.views.defaults import page_not_found
 from forms import EncurtarURLForm
@@ -61,3 +61,12 @@ class GoToRedirectView(RedirectView):
             return super(GoToRedirectView, self).get(request, *args, **kwargs)
         except Link.DoesNotExist:
             return page_not_found(request)
+
+class MyLinksListView(ListView):
+    template_name = 'encurtador/my-links.html'
+    context_object_name = 'meus_links'
+    paginate_by = 20
+
+    def get_queryset(self):
+        self.queryset = Link.objects.meus_links(self.request.user)
+        return super(MyLinksListView, self).get_queryset()

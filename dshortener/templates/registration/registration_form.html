@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 
 {% block css %}
-    <link rel="stylesheet" href="{{ STATIC_URL }}registration/css/registration_form.css" type="text/css" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/forms.css" type="text/css">
 {% endblock %}
 
 {% block content %}
-    <h2>Registration</h2>
-    <div id="registration">
-        <form method="post" action="">
+    <div class="forms">
+        <h2>Crie sua conta</h2>
+        <form method="post" action="" class="form-center medium">
             {% csrf_token %}
             {{ form.as_p }}
             <p><input type="submit" value="Cadastrar-me" /></p>
