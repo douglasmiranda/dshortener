@@ -2,6 +2,9 @@
 from django.views.generic import View, RedirectView, ListView
 from django.template.response import TemplateResponse
 from django.views.defaults import page_not_found
+from django.http import HttpResponse
+import simplejson
+import urllib2
 from forms import EncurtarURLForm
 from models import Link
 
@@ -34,11 +37,14 @@ class HomeTemplateView(View):
             resultado['status'] = 'ok'
             resultado['url'] = link.url
             resultado['url_curta'] = link.url_curta
-            print 'usuário:', link.usuario
         else:
             resultado['status'] = 'erro'
             resultado['mensagem'] = 'Informe uma URL válida para ser encurtada!'
         contexto['resultado'] = resultado
+
+        if self.request.is_ajax():
+            json = simplejson.dumps(resultado)
+            return HttpResponse(json, content_type='application/json')
 
         return TemplateResponse(
             request = self.request,
@@ -57,7 +63,7 @@ class GoToRedirectView(RedirectView):
         uuid = kwargs.get('uuid_curto')
         try:
             l = Link.objects.by_uuid(uuid)
-            self.url = l.url
+            self.url = urllib2.unquote(l.url)
             return super(GoToRedirectView, self).get(request, *args, **kwargs)
         except Link.DoesNotExist:
             return page_not_found(request)

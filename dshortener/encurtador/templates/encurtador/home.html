@@ -35,7 +35,7 @@
 {% block js %}
     <script src="{{ STATIC_URL }}js/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript">
-    $(document).ready(function(){
+    select_text = function(){
         $(".select-text").on("click", function(){
             li = $(this).parent();
             if(!li.find('input').length){
@@ -45,6 +45,60 @@
                 li.find('input').focus();
             }
         });
+    }
+
+    shorten_url = function(url){
+        truncate = function(text){
+            if(text.length > 40){
+                text = text.substr(0, 40) + '...'
+            }
+            return text
+        }
+        $.ajax({
+            type: "POST",
+            url: "{% url home %}",
+            cache: false,
+            data: $('#form-shorten-url form').serialize(),
+            dataType:'json',
+            success: function(data){
+                if (data.status == 'ok') {
+                    container = $('#shortened-urls');
+                    container.show().addClass('ok');
+                    html = '<li class="short-url">';
+                    html += '<span class="select-text" data-shortened-url="';
+                    html += data.url_curta;
+                    html += '">selecionar</span>';
+                    html += ' - <a href="';
+                    html += data.url_curta;
+                    html += '" class="shortened-url">';
+                    html += data.url_curta;
+                    html += '</a> &raquo;';
+                    html += '<a href="';
+                    html += data.url;
+                    html += '">';
+                    html += truncate(data.url);
+                    html += '</a>';
+                    html += '</li>';
+                    container.prepend(html);
+                    $('#id_url').val('');
+                    select_text();
+                }else{
+                    alert('Entre com uma URL válida para ser encurtada!')
+                }
+            }
+        });
+    }
+    $(document).ready(function(){
+        $("#shorten-it").click(function(){
+            val = $('#id_url').val();
+            if (val) {
+                shorten_url(val);
+            }else{
+                alert('Entre com uma URL válida para ser encurtada!')
+            }
+            return false;
+        });
+        select_text();
     });
     </script>
 {% endblock %}

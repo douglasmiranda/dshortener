@@ -1,3 +1,4 @@
+# coding:utf-8
 from django.forms import ModelForm, TextInput, URLField
 from models import Link
 
