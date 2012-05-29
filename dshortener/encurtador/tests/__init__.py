@@ -1,1 +1,1 @@
-from uuid import *
+from test_uuid import *
