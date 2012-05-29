@@ -11,6 +11,7 @@ class LinkManager(models.Manager):
     def meus_links(self, usuario):
         return self.filter(usuario=usuario)
 
+
 class Link(models.Model):
     handler = UUIDCurto()
     url = models.URLField()
@@ -36,4 +37,3 @@ class Link(models.Model):
     class Meta:
         ordering = ['-criacao']
         get_latest_by = 'criacao'
-

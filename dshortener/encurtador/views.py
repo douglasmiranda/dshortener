@@ -15,9 +15,9 @@ class HomeTemplateView(View):
     def get(self, request, *args, **kwargs):
         contexto = self.get_context_data()
         return TemplateResponse(
-            request = self.request,
-            template = self.template_name,
-            context = contexto,
+            request=self.request,
+            template=self.template_name,
+            context=contexto,
             **kwargs
         )
 
@@ -47,9 +47,9 @@ class HomeTemplateView(View):
             return HttpResponse(json, content_type='application/json')
 
         return TemplateResponse(
-            request = self.request,
-            template = self.template_name,
-            context = contexto,
+            request=self.request,
+            template=self.template_name,
+            context=contexto,
             **kwargs
         )
 
@@ -57,6 +57,7 @@ class HomeTemplateView(View):
         contexto = {}
         contexto['form_encurtar_url'] = EncurtarURLForm
         return contexto
+
 
 class GoToRedirectView(RedirectView):
     def get(self, request, *args, **kwargs):
@@ -67,6 +68,7 @@ class GoToRedirectView(RedirectView):
             return super(GoToRedirectView, self).get(request, *args, **kwargs)
         except Link.DoesNotExist:
             return page_not_found(request)
+
 
 class MyLinksListView(ListView):
     template_name = 'encurtador/my-links.html'
