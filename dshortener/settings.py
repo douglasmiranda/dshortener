@@ -153,5 +153,9 @@ LOGGING = {
 # django-register
 ACCOUNT_ACTIVATION_DAYS = 7
 
+LOGIN_URL = '/user/auth/login/'
+LOGOUT_URL = '/user/auth/logout/'
+LOGIN_REDIRECT_URL = '/user/my-links'
+
 # app encurtador
 ENCURTADOR_SITE_BASE_URL = 'http://localhost:8000/'

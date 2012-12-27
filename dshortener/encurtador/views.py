@@ -5,6 +5,7 @@ from django.views.defaults import page_not_found
 from django.http import HttpResponse
 import simplejson
 import urllib2
+from core.views import LoginRequiredMixin
 from forms import EncurtarURLForm
 from models import Link
 
@@ -70,7 +71,7 @@ class GoToRedirectView(RedirectView):
             return page_not_found(request)
 
 
-class MyLinksListView(ListView):
+class MyLinksListView(LoginRequiredMixin, ListView):
     template_name = 'encurtador/my-links.html'
     context_object_name = 'meus_links'
     paginate_by = 20
