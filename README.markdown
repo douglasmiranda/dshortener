@@ -34,5 +34,7 @@ $ cd dshortener
 $ cd dshortener
 $ ./manage.py syncdb
 $ ./manage.py runserver
-# Tah Dah, é pra funcionar daí tbm... mas ainda acho que deva aprender sobre virtualenv/virtualenvwrapper e pip :P
+# Tah Dah, é pra funcionar daí tbm... mas ainda acho que você deve aprender sobre virtualenv/virtualenvwrapper e pip :P
 ```
+
+PS: É bem simples, daí você pode usar sua criatividade e implementar um contador e/ou outras estatísticas. Quando criar o diferencial do seu encurtador de URLs, basta lancá-lo e ficar milionário. =D
