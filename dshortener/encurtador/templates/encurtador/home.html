@@ -12,6 +12,7 @@
                     <img src="{{ STATIC_URL }}encurtador/img/logo-home.png" alt="dShortener - encurtador de URLs">
                 </a>
                 <p>dShortener - Um encurtador de URLs feito em Django</p>
+                <p class="clipboard-info"></p>
             </h1>
         </div>
         <div id="form-shorten-url">
@@ -24,7 +25,7 @@
         <ul id="shortened-urls" class="{{ resultado.status }} {% if resultado.status %}show{% endif %}">
             {% ifequal resultado.status 'ok' %}
             <li class="short-url">
-                <span class="select-text" data-shortened-url="{{ resultado.url_curta }}">selecionar</span> - <a href="{{ resultado.url_curta }}" class="shortened-url">{{ resultado.url_curta }}</a> &raquo; {{ resultado.url|urlizetrunc:40 }}
+                <span class="select-text" data-shortened-url="{{ resultado.url_curta }}">selecionar</span> - <input type="text" data-clipboard-text="{{ resultado.url_curta }}" value="{{ resultado.url_curta }}" title="Clipe para copiar para área de transferência"> &raquo; {{ resultado.url|urlizetrunc:40 }}
             </li>
             {% else %}
             <li class="error">{{ resultado.mensagem }}</li>
@@ -34,16 +35,23 @@
 {% endblock %}
 {% block js %}
     <script src="{{ STATIC_URL }}js/jquery.min.js" type="text/javascript"></script>
+    <script src="{{ STATIC_URL }}encurtador/zeroclipboard/ZeroClipboard.js" type="text/javascript"></script>
     <script type="text/javascript">
     select_text = function(){
-        $(".select-text").on("click", function(){
-            li = $(this).parent();
-            if(!li.find('input').length){
-                link = li.find('.shortened-url');
-                link.hide();
-                link.after('<input type="text" value="'+ link.text() +'">');
-                li.find('input').focus();
-            }
+        input_text = '#shortened-urls li input';
+        ZeroClipboard.setMoviePath("{{ STATIC_URL }}encurtador/zeroclipboard/ZeroClipboard.swf");
+        var clip = new ZeroClipboard.Client(input_text);
+
+        clip.on('noflash', function (client) {
+            $(input_text).prop('title', '');
+        });
+
+        clip.on('complete', function (client, args) {
+            $(".clipboard-info").show().html("Copiado para área de transferência: " + args.text);
+        });
+
+        $(input_text).bind("mouseover", function(){
+            clip.setText($(this).attr('data-clipboard-text'));
         });
     }
 
@@ -68,11 +76,14 @@
                     html += '<span class="select-text" data-shortened-url="';
                     html += data.url_curta;
                     html += '">selecionar</span>';
-                    html += ' - <a href="';
+                    html += ' - <input type="text" data-clipboard-text="';
                     html += data.url_curta;
-                    html += '" class="shortened-url">';
+                    html += '" href="';
                     html += data.url_curta;
-                    html += '</a> &raquo;';
+                    html += '" value="';
+                    html += data.url_curta;
+                    html += '" title="Clipe para copiar para área de transferência">';
+                    html += ' &raquo;';
                     html += '<a href="';
                     html += data.url;
                     html += '">';
@@ -101,4 +112,5 @@
         select_text();
     });
     </script>
+
 {% endblock %}
